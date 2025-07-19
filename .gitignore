@@ -1,0 +1,44 @@
+# Object files, build output
+*.o
+*.lo
+*.la
+*.slo
+*.so
+*.a
+
+# libtool files
+.libs/
+.deps/
+
+# configure and automake artifacts
+Makefile
+Makefile.in
+aclocal.m4
+autom4te.cache/
+config.h
+config.h.in
+config.log
+config.nice
+config.status
+configure
+libtool
+ltmain.sh
+missing
+install-sh
+mkinstalldirs
+depcomp
+stamp-h1
+
+# PHP extension build artifacts
+modules/
+
+# PHP test artifacts
+*.diff
+*.exp
+*.log
+*.out
+*.mem
+*.sh
+
+# Generated tests
+run-tests.php
