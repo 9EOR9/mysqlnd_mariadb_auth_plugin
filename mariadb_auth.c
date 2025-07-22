@@ -19,6 +19,7 @@
 #include "config.h"
 #endif
 
+#include "php.h"
 #include "ext/mysqlnd/mysqlnd.h"
 #include "ext/mysqlnd/mysqlnd_auth.h"
 #include "ext/mysqlnd/mysqlnd_plugin.h"

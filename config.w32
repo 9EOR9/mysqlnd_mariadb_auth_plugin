@@ -3,7 +3,7 @@ ARG_WITH("mysqlnd_mariadb_auth", "with Mariadb authentication support for mysqln
 if (PHP_MYSQLND_MARIADB_AUTH != "no") {
     if (CHECK_LIB("libsodium.lib", "sodium", PHP_SODIUM) && CHECK_HEADER_ADD_INCLUDE("sodium.h", "CFLAGS_SODIUM")) {
 
-        EXTENSION("mysqlnd_mariadb_auth", "mariadb_auth.c")
+        EXTENSION("mysqlnd_mariadb_auth", "mariadb_auth.c", true)
         ADD_EXTENSION_DEP('mysqlnd_mariadb_auth', 'mysqlnd');
         ADD_FLAG("LIBS", "libsodium.lib")
     } else {
