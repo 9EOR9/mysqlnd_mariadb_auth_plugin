@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <package version="2.0" xmlns="http://pear.php.net/dtd/package-2.0">
- <name>mariadb_auth_plugin</name>
+ <name>mysqlnd_mariadb_auth</name>
  <channel>pecl.php.net</channel>
  <summary>MariaDB Authentication Plugin for PHP</summary>
  <description>
  Provides a MariaDB authentication plugin for PHP using the mysqlnd driver,
- supporting ed25519 and other authentication methods.
+ supporting ed25519 authentication method.
  </description>
  <lead>
   <name>Georg Richter</name>
   <user>yourhandle</user>
-  <email>georg@php.net</email>
+  <email>georg@mariadb.com</email>
   <active>yes</active>
  </lead>
  <date>2025-07-17</date>
@@ -20,19 +20,19 @@
   <api>0.1.0</api>
  </version>
  <stability>
-  <release>alpha</release>
-  <api>alpha</api>
+  <release>beta</release>
+  <api>beta</api>
  </stability>
  <license uri="https://www.php.net/license/3_01.txt">PHP License 3.01</license>
  <notes>
- Initial alpha release of MariaDB authentication plugin for PHP.
+ Initial beta release of MariaDB authentication plugin for PHP.
  </notes>
  <contents>
   <dir name="/">
    <file role="src" name="config.m4"/>
    <file role="src" name="config.w32"/>
-   <file role="src" name="mariadb_auth_plugin.c"/>
-   <file role="src" name="php_mariadb_auth_plugin.h"/>
+   <file role="src" name="mariadb_auth.c"/>
+   <file role="src" name="php_mariadb_auth.h"/>
    <file role="doc" name="LICENSE"/>
    <file role="doc" name="README.md"/>
   </dir>
@@ -50,5 +50,3 @@
  <providesextension>mariadb_auth_plugin</providesextension>
  <extsrcrelease/>
 </package>
-
-

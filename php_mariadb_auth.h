@@ -24,4 +24,3 @@ extern zend_module_entry mariadb_auth_plugin_module_entry;
 #define phpext_mariadb_auth_plugin_ptr &mariadb_auth_plugin_module_entry
 
 #endif
-
