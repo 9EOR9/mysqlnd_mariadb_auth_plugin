@@ -1,18 +1,18 @@
 /*
   +----------------------------------------------------------------------+
-  | PHP Version 8														|
+  | PHP Version 8                                                        |
   +----------------------------------------------------------------------+
-  | Copyright (c) 2025 The PHP Group									 |
+  | Copyright (c) 1997-2025 The PHP Group                                |
   +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,	  |
-  | that is bundled with this package in the file LICENSE, and is		|
-  | available through the world-wide-web at the following url:		   |
-  | https://www.php.net/license/3_01.txt								 |
+  | This source file is subject to version 3.01 of the PHP license,      |
+  | that is bundled with this package in the file LICENSE, and is        |
+  | available through the world-wide-web at the following url:           |
+  | https://www.php.net/license/3_01.txt                                 |
   | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to		  |
-  | license@php.net so we can mail you a copy immediately.			   |
+  | obtain it through the world-wide-web, please send a note to          |
+  | license@php.net so we can mail you a copy immediately.               |
   +----------------------------------------------------------------------+
-  | Author: Georg Richter <georg@mariadb.com>							|
+  | Author: Georg Richter <georg@mariadb.com>                            |
   +----------------------------------------------------------------------+
 */
 #ifdef HAVE_CONFIG_H
@@ -131,30 +131,31 @@ static struct st_mysqlnd_authentication_plugin mariadb_ed25519_auth_plugin = {
 		PHP_VERSION_ID,
 		PHP_MARIADB_AUTH_PLUGIN_VERSION,
 		"PHP License 3.01",
-		"Georg Richter <georg@php.net>",
+		"Georg Richter <georg@mariadb.com>",
 		{ NULL, NULL },
 		{ NULL },
 	},
-	/* Add additional struct fields here if needed */
+	mariadb_ed25519_auth,
+	NULL
 };
 
-PHP_MINIT_FUNCTION(mariadb_auth_plugin)
+PHP_MINIT_FUNCTION(mysqlnd_mariadb_auth)
 {
 	mysqlnd_plugin_register_ex((struct st_mysqlnd_plugin_header*)&mariadb_ed25519_auth_plugin);
 	return SUCCESS;
 }
 
-PHP_MSHUTDOWN_FUNCTION(mariadb_auth_plugin)
+PHP_MSHUTDOWN_FUNCTION(mysqlnd_mariadb_auth)
 {
 	return SUCCESS;
 }
 
-zend_module_entry mariadb_auth_plugin_module_entry = {
+zend_module_entry mysqlnd_mariadb_auth_module_entry = {
 	STANDARD_MODULE_HEADER,
-	"mariadb_auth_plugin",
+	"mysqlnd_mariadb_auth",
 	NULL,
-	PHP_MINIT(mariadb_auth_plugin),
-	PHP_MSHUTDOWN(mariadb_auth_plugin),
+	PHP_MINIT(mysqlnd_mariadb_auth),
+	PHP_MSHUTDOWN(mysqlnd_mariadb_auth),
 	NULL,
 	NULL,
 	NULL,
@@ -162,8 +163,8 @@ zend_module_entry mariadb_auth_plugin_module_entry = {
 	STANDARD_MODULE_PROPERTIES
 };
 
-#ifdef COMPILE_DL_MARIADB_AUTH_PLUGIN
-ZEND_GET_MODULE(mariadb_auth_plugin)
+#ifdef COMPILE_DL_MYSQLND_MARIADB_AUTH
+ZEND_GET_MODULE(mysqlnd_mariadb_auth)
 #endif
 
 /*

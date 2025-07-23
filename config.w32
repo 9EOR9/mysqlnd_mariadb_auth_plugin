@@ -5,7 +5,7 @@ if (PHP_MYSQLND_MARIADB_AUTH != "no") {
 
         EXTENSION("mysqlnd_mariadb_auth", "mariadb_auth.c", true)
         ADD_EXTENSION_DEP('mysqlnd_mariadb_auth', 'mysqlnd');
-        ADD_FLAG("LIBS", "libsodium.lib")
+        ADD_EXTENSION_DEP('mysqlnd_mariadb_auth', 'sodium');
     } else {
         WARNING("libsodium not found");
     }

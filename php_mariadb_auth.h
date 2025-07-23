@@ -12,7 +12,7 @@
   | obtain it through the world-wide-web, please send a note to          |
   | license@php.net so we can mail you a copy immediately.               |
   +----------------------------------------------------------------------+
-  | Author: Georg Richter <georg@php.net>                                |
+  | Author: Georg Richter <georg@mariadb.com>                            |
   +----------------------------------------------------------------------+
 */
 #ifndef PHP_MARIADB_AUTH_PLUGIN_H
