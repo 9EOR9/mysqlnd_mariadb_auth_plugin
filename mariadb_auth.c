@@ -141,7 +141,11 @@ static struct st_mysqlnd_authentication_plugin mariadb_ed25519_auth_plugin = {
 
 PHP_MINIT_FUNCTION(mysqlnd_mariadb_auth)
 {
-	mysqlnd_plugin_register_ex((struct st_mysqlnd_plugin_header*)&mariadb_ed25519_auth_plugin);
+	if (mysqlnd_plugin_register_ex((struct st_mysqlnd_plugin_header*)&mariadb_ed25519_auth_plugin) == FAIL)
+  {
+    php_error_docref(NULL, E_WARNING, "mysqlnd_plugin_register_ex failed");
+    return FAILURE;
+  }
 	return SUCCESS;
 }
 
