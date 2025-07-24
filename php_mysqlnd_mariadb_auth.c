@@ -1,19 +1,19 @@
 /*
-  +----------------------------------------------------------------------+
-  | PHP Version 8                                                        |
-  +----------------------------------------------------------------------+
-  | Copyright (c) 1997-2025 The PHP Group                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | https://www.php.net/license/3_01.txt                                 |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Author: Georg Richter <georg@mariadb.com>                            |
-  +----------------------------------------------------------------------+
+	+----------------------------------------------------------------------+
+	| PHP Version 8                                                        |
+	+----------------------------------------------------------------------+
+	| Copyright (c) 1997-2025 The PHP Group                                |
+	+----------------------------------------------------------------------+
+	| This source file is subject to version 3.01 of the PHP license,      |
+	| that is bundled with this package in the file LICENSE, and is        |
+	| available through the world-wide-web at the following url:           |
+	| https://www.php.net/license/3_01.txt                                 |
+	| If you did not receive a copy of the PHP license and are unable to   |
+	| obtain it through the world-wide-web, please send a note to          |
+	| license@php.net so we can mail you a copy immediately.               |
+	+----------------------------------------------------------------------+
+	| Author: Georg Richter <georg@mariadb.com>                            |
+	+----------------------------------------------------------------------+
 */
 #ifdef HAVE_CONFIG_H
 #include "config.h"
@@ -25,7 +25,7 @@
 #include "ext/mysqlnd/mysqlnd_plugin.h"
 #include "php.h"
 #include "php_ini.h"
-#include "php_mariadb_auth.h"
+#include "php_mysqlnd_mariadb_auth.h"
 #include <sodium.h>
 
 #define SHA512_LENGTH 64
@@ -108,18 +108,18 @@ static zend_uchar* mariadb_ed25519_auth(struct st_mysqlnd_authentication_plugin*
 	zend_uchar* ret = NULL;
 
 	if (auth_plugin_data_len != NONCE_LENGTH)
-		return NULL;
+	return NULL;
 
 	if (passwd && passwd_len) {
-		ret = calloc(SHA512_LENGTH + 1, 1);
+	ret = calloc(SHA512_LENGTH + 1, 1);
 
-		if (!(ma_crypto_sign(ret, auth_plugin_data, auth_plugin_data_len, passwd, passwd_len))) {
-			*auth_data_len = SHA512_LENGTH;
-			ret[SHA512_LENGTH] = 0;
-		} else {
-			free(ret);
-			ret = NULL;
-		}
+	if (!(ma_crypto_sign(ret, auth_plugin_data, auth_plugin_data_len, passwd, passwd_len))) {
+		*auth_data_len = SHA512_LENGTH;
+		ret[SHA512_LENGTH] = 0;
+	} else {
+		free(ret);
+		ret = NULL;
+	}
 	}
 	return ret;
 }
@@ -142,10 +142,10 @@ static struct st_mysqlnd_authentication_plugin mariadb_ed25519_auth_plugin = {
 PHP_MINIT_FUNCTION(mysqlnd_mariadb_auth)
 {
 	if (mysqlnd_plugin_register_ex((struct st_mysqlnd_plugin_header*)&mariadb_ed25519_auth_plugin) == FAIL)
-  {
-    php_error_docref(NULL, E_WARNING, "mysqlnd_plugin_register_ex failed");
-    return FAILURE;
-  }
+	{
+	  php_error_docref(NULL, E_WARNING, "mysqlnd_plugin_register_ex failed");
+	  return FAILURE;
+	}
 	return SUCCESS;
 }
 
@@ -171,6 +171,4 @@ zend_module_entry mysqlnd_mariadb_auth_module_entry = {
 ZEND_GET_MODULE(mysqlnd_mariadb_auth)
 #endif
 
-/*
-vim: set ts=4 sw=4 et:
-*/
+/* vim: set noexpandtab tabstop=4 shiftwidth=4: */

@@ -15,6 +15,6 @@ if test "$PHP_MYSQLND_MARIADB_AUTH" != "no"; then
   PHP_ADD_EXTENSION_DEP(mysqlnd_mariadb_auth, sodium, true)
   PHP_REQUIRE_CXX()
   PHP_ADD_INCLUDE($MYSQLND_DIR/include)
-  PHP_NEW_EXTENSION(mysqlnd_mariadb_auth, mariadb_auth.c, $ext_shared)
+  PHP_NEW_EXTENSION(mysqlnd_mariadb_auth, php_mysqlnd_mariadb_auth.c, $ext_shared)
   PHP_SUBST(MYSQLND_MARIADB_AUTH_SHARED_LIBADD)
 fi
