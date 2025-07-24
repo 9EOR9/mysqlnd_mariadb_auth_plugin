@@ -6,7 +6,6 @@ This is a collection of MariaDB specific plugins for mysqlnd, provided as a PECL
 
 1.  **Prepare your environment:**
     Make sure you have PHP development headers and `mysqlnd` development files installed.
-    On Debian/Ubuntu: `sudo apt-get install php-dev libmysqlclient-dev` (or `libmysqlnd-dev` if available and preferred).
 
 2.  **Navigate to the module directory:**
     ```bash
@@ -39,15 +38,19 @@ This is a collection of MariaDB specific plugins for mysqlnd, provided as a PECL
     extension=mysqlnd_mariadb_auth.so
     ```
 
-8.  **Restart your web server or PHP-FPM.**
-
 ## Usage
 
 This plugin registers an authentication method named `ed25519`. To use it, your MariaDB server would need to be configured to use this authentication method for a specific user.
 
-**MariaDB Server Configuration (Example - Highly simplified for a custom plugin):**
+**MariaDB Server Configuration (Example):**
+
+Install the ed25519 authentication support:
+
+```sql
+INSTALL SONAME 'auth_ed25519'
+
 
 On the MariaDB server, you would typically use `CREATE USER` or `ALTER USER` with the `AUTHENTICATION PLUGIN` clause. For example:
 
 ```sql
-CREATE USER 'myuser'@'localhost' IDENTIFIED WITH ed25519 BY 'some_password';
+CREATE USER 'myuser'@'localhost' IDENTIFIED WITH ed25519 BY 'secret';

@@ -4,8 +4,8 @@
  <channel>pecl.php.net</channel>
  <summary>MariaDB Authentication Plugin for PHP</summary>
  <description>
- Provides a MariaDB authentication plugin for PHP using the mysqlnd driver,
- supporting ed25519 authentication method.
+ The mysqlnd_mariadb_auth extension provides an Ed25519-based authentication plugin for PHP’s mysqlnd driver, allowing secure authentication with MariaDB servers using modern cryptography via libsodium. This improves connection security by replacing the SHA-1-based mysql_native_password authentication with Ed25519 public-key signatures.
+Support for additional authentication methods, including the MariaDB parsec plugin, is planned for future versions.
  </description>
  <lead>
   <name>Georg Richter</name>
@@ -31,8 +31,8 @@
   <dir name="/">
    <file role="src" name="config.m4"/>
    <file role="src" name="config.w32"/>
-   <file role="src" name="mariadb_auth.c"/>
-   <file role="src" name="php_mariadb_auth.h"/>
+   <file role="src" name="php_mysqlnd_mariadb_auth.c"/>
+   <file role="src" name="php_mysqlnd_mariadb_auth.h"/>
    <file role="doc" name="LICENSE"/>
    <file role="doc" name="README.md"/>
   </dir>
@@ -47,6 +47,6 @@
    </pearinstaller>
   </required>
  </dependencies>
- <providesextension>mariadb_auth_plugin</providesextension>
+ <providesextension>mysqlnd_mariadb_auth</providesextension>
  <extsrcrelease/>
 </package>
